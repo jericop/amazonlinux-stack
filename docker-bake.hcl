@@ -7,7 +7,7 @@ variable "MAINTAINER" {
 }
 
 variable "BASE_IMAGE" {
-    default = "amazonlinux:2"
+    default = "amazonlinux:2023"
 }
 
 variable "IMAGE_NAME_PREFIX" {

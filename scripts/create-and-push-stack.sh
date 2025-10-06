@@ -2,8 +2,13 @@
 
 set -x
 
+docker_buildx_args=""
+if [[ ! -z "${PUSH_IMAGE:-}" && "${PUSH_IMAGE:-}" != "false" ]]; then
+    docker_buildx_args="--push"
+fi
+
 docker run -d --rm --privileged tonistiigi/binfmt --install all
 docker context create al2-stack-context
 docker buildx create --name al2-stack --use al2-stack-context
 docker buildx ls
-docker buildx bake --file docker-bake.hcl --push
+docker buildx bake --file docker-bake.hcl $docker_buildx_args
