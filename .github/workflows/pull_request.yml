@@ -1,5 +1,5 @@
 name: Build locally
-  on: pull_request
+on: pull_request
 env:
   PUSH_IMAGE: false
 jobs:
