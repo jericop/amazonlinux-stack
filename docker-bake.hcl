@@ -7,7 +7,7 @@ variable "MAINTAINER" {
 }
 
 variable "BASE_IMAGE" {
-    default = "amazonlinux:2023"
+    default = "public.ecr.aws/amazonlinux/amazonlinux:2023"
 }
 
 variable "IMAGE_NAME_PREFIX" {
@@ -20,10 +20,6 @@ variable "DESCRIPTION" {
 
 
 variable "STACK_METADATA" {
-    default = ""
-}
-
-variable "MIXINS" {
     default = ""
 }
 
@@ -47,7 +43,6 @@ target "_stack_info" {
   args = {
     description         = DESCRIPTION
     metadata            = STACK_METADATA
-    mixins              = MIXINS
     released            = RELEASED
     package_metadata    = PACKAGE_METADATA
     maintainer          = MAINTAINER

@@ -1,12 +1,15 @@
-ARG BASE_IMAGE
+ARG BASE_IMAGE="public.ecr.aws/amazonlinux/amazonlinux:2023"
 
 # run-base image
 FROM ${BASE_IMAGE} AS run-base
 
+ARG cnb_user=cnb
 ARG cnb_uid=1000
 ARG cnb_gid=1000
 ARG distro_name="Amazon Linux"
 ARG distro_version="2023"
+ARG GIT_REPO="https://github.com/jericop/amazonlinux-stack"
+ARG MAINTAINER="jericop"
 ARG homepage=$GIT_REPO
 ARG maintainer=$MAINTAINER
 ARG stack_id="io.buildpacks.stacks.amazonlinux.2023"
