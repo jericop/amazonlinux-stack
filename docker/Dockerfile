@@ -77,6 +77,7 @@ RUN <<EOF
     tar \
     unzip \
     wget \
+    which \
     xz \
     zip \
     zlib \
