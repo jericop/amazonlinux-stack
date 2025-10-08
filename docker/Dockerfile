@@ -82,7 +82,8 @@ RUN <<EOF
     zip \
     zlib \
     zlib-devel \
-  && dnf clean all
+    && dnf groupinstall -y "Development Tools" \
+    && dnf clean all
 
 YJ_URL=https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64
 
