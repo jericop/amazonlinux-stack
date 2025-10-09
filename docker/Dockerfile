@@ -56,9 +56,8 @@ FROM run-base AS build-base
 
 # This includes all packages needed to install python from source
 RUN <<EOF
-  dnf update -y \
-  && dnf install -y \
-    curl \
+  dnf update -y
+  dnf install -y \
     expat-devel \
     g++ \
     gcc \
@@ -81,18 +80,17 @@ RUN <<EOF
     xz \
     zip \
     zlib \
-    zlib-devel \
-    && dnf groupinstall -y "Development Tools" \
-    && dnf clean all
+    zlib-devel
+  dnf clean all
 
-YJ_URL=https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64
+  YJ_URL=https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64
 
-if [ $(arch) = "aarch64" ]; then
-  YJ_URL=https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-arm64
-fi
+  if [ $(arch) = "aarch64" ]; then
+    YJ_URL=https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-arm64
+  fi
 
-# Install yj (no checksums available)
-curl -sSL "$YJ_URL" > /usr/local/bin/yj && chmod +x /usr/local/bin/yj
+  # Install yj (no checksums available)
+  curl -sSL "$YJ_URL" > /usr/local/bin/yj && chmod +x /usr/local/bin/yj
 
 EOF
 
